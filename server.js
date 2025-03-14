@@ -78,7 +78,7 @@ router.route('/movies')
       }
     })
   .post(authJwtController.isAuthenticated, async (req, res) => {
-      if (!req.body.title || !req.body.actors || !req.body.genre) {
+      if (!req.body.title || !req.body.actors || req.body.actors.length === 0) {
         return res.status(400).json({ success: false, message: 'Please include title, genres, actors' });
       }
       try {
